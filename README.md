@@ -13,19 +13,4 @@ This is a **React + Node.js + MongoDB** project for browsing and booking movies.
 - **Backend:** Node.js, Express
 - **Database:** MongoDB (local or cloud)
 
-## Folder Structure
-
-movie-booking-app/
-│
-├── backend/ # Node.js + Express server
-│ └── routes/
-│ └── models/
-│ └── server.js
-│
-├── frontend/ # React app
-│ └── src/
-│ └── public/
-│
-├── README.md
-└── package.json
 
