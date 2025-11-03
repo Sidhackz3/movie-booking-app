@@ -8,7 +8,12 @@ const seatSchema = new mongoose.Schema({
 const movieSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: String,
+  director: String,
+  cast: [String], // you’re splitting comma-separated string into array in controller
   genre: String,
+  releaseDate: String,
+  duration: Number,
+  posterUrl: String,
   rating: Number,
   showtimes: [String],
   seats: [seatSchema],

@@ -32,3 +32,56 @@ exports.getMovieById = async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 };
+
+// ✅ Add createMovie controller (with auto seat generation)
+exports.createMovie = async (req, res) => {
+  try {
+    const {
+      title,
+      description,
+      director,
+      cast,
+      genre,
+      releaseDate,
+      duration,
+      posterUrl,
+      rating,
+      showtimes
+    } = req.body;
+
+    // Convert cast to array if it's a comma-separated string
+    const normalizedCast =
+      typeof cast === "string"
+        ? cast.split(",").map((s) => s.trim()).filter(Boolean)
+        : cast;
+
+    // Generate 50 default seats if not provided
+    const seats = [];
+    const rows = ["A", "B", "C", "D", "E"];
+    for (let r of rows) {
+      for (let i = 1; i <= 10; i++) {
+        seats.push({ seatNumber: `${r}${i}`, status: "available" });
+      }
+    }
+
+    const newMovie = new Movie({
+      title,
+      description,
+      director,
+      cast: normalizedCast,
+      genre,
+      releaseDate,
+      duration,
+      posterUrl,
+      rating,
+      showtimes,
+      seats,
+    });
+
+    await newMovie.save();
+    res.status(201).json({ success: true, data: newMovie });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+};
+
