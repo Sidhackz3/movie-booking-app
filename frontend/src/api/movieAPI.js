@@ -1,5 +1,5 @@
 // src/api/movieAPI.js
-const API_BASE = "https://render.com/docs/web-services?_gl=1*1yy1bwz*_ga*NTY3NDg4OTExLjE3NjI0MjA1MDY.*_ga_QK9L9QJC5N*czE3NjI0MjA1MDUkbzEkZzEkdDE3NjI0MjIwMTkkajYwJGwwJGgw#port-binding";
+const API_BASE = "https://movie-booking-app-bbgn.onrender.com/";
 
 export async function fetchMovies({ page = 1, limit = 12, search = "" } = {}) {
   const qs = new URLSearchParams({ page, limit, search }).toString();
