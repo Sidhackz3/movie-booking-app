@@ -1,5 +1,5 @@
 // src/api/movieAPI.js
-const API_BASE = "https://movie-booking-app-bbgn.onrender.com/";
+const API_BASE = "https://movie-booking-app-bbgn.onrender.com";
 
 export async function fetchMovies({ page = 1, limit = 12, search = "" } = {}) {
   const qs = new URLSearchParams({ page, limit, search }).toString();
